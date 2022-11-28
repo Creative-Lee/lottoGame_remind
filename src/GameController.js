@@ -1,4 +1,5 @@
 const InputView = require('./views/InputView.js');
+const OutputView = require('./views/OutputView.js');
 const Validation = require('./Validation.js');
 const LottoGame = require('./LottoGame.js');
 const Lotto = require('./Lotto.js');
@@ -20,11 +21,10 @@ class GameController {
     Validation.validateMoneyAmount(moneyAmount);
 
     const lottoQuantity = moneyAmount / LOTTO.price;
-    const lottos = Array.from({ length: lottoQuantity }, () => {
-      return new Lotto(lottoNumberGenerator());
-    });
+    const lottos = Array.from({ length: lottoQuantity }, () => new Lotto(lottoNumberGenerator()));
 
     this.#lottoGame = new LottoGame(lottos);
+    OutputView.printLottoQuantity(lottoQuantity);
   }
 }
 
