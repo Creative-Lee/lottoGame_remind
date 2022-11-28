@@ -7,7 +7,7 @@ class Validation {
       throw new Error(ERROR_MSG.invalidInputType);
     }
 
-    if (!this.#isStartedZero(moneyAmount)) {
+    if (this.#isStartedZero(moneyAmount)) {
       throw new Error(ERROR_MSG.startedZero);
     }
 
