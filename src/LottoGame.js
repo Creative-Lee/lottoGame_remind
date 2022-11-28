@@ -1,4 +1,4 @@
-const Lotto = require('./Lotto.j');
+const Lotto = require('./Lotto.js');
 
 class LottoGame {
   #Lottos;

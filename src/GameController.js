@@ -29,6 +29,7 @@ class GameController {
     this.#lottoGame.createLottos(eachLottoNumbers);
 
     OutputView.printLottoQuantity(lottoQuantity);
+    OutputView.printEachLottoNumbers(eachLottoNumbers);
   }
 }
 
