@@ -1,8 +1,10 @@
+const Lotto = require('./Lotto.j');
+
 class LottoGame {
   #Lottos;
 
-  constructor(lottos) {
-    this.#Lottos = lottos;
+  createLottos(eachLottoNumbers) {
+    this.#Lottos = eachLottoNumbers.map((numbers) => new Lotto(numbers));
   }
 }
 

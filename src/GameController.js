@@ -9,6 +9,10 @@ const lottoNumberGenerator = require('./utils/lottoNumberGenerator.js');
 class GameController {
   #lottoGame;
 
+  constructor() {
+    this.#lottoGame = new LottoGame();
+  }
+
   start() {
     this.#requestMoneyAmount();
   }
@@ -21,9 +25,9 @@ class GameController {
     Validation.validateMoneyAmount(moneyAmount);
 
     const lottoQuantity = moneyAmount / LOTTO.price;
-    const lottos = Array.from({ length: lottoQuantity }, () => new Lotto(lottoNumberGenerator()));
+    const eachLottoNumbers = Array.from({ length: lottoQuantity }, lottoNumberGenerator);
+    this.#lottoGame.createLottos(eachLottoNumbers);
 
-    this.#lottoGame = new LottoGame(lottos);
     OutputView.printLottoQuantity(lottoQuantity);
   }
 }
