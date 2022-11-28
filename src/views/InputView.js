@@ -5,6 +5,10 @@ const InputView = {
   requestMoneyAmount(callback) {
     Console.readLine(REQUEST_MSG.moneyAmount, callback);
   },
+
+  requestWinningNumber(callback) {
+    Console.readLine(REQUEST_MSG.winningNumber, callback);
+  },
 };
 
 module.exports = InputView;

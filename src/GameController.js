@@ -30,6 +30,12 @@ class GameController {
 
     OutputView.printLottoQuantity(lottoQuantity);
     OutputView.printEachLottoNumbers(eachLottoNumbers);
+
+    this.#requestWinningNumber();
+  }
+
+  #requestWinningNumber() {
+    InputView.requestWinningNumber((winningNumber) => {});
   }
 }
 
