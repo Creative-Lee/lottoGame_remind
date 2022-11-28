@@ -1,4 +1,5 @@
 const InputView = require('./views/InputView.js');
+const Validation = require('./Validation.js');
 
 class GameController {
   start() {
@@ -6,7 +7,11 @@ class GameController {
   }
 
   #requestMoneyAmount() {
-    InputView.requestMoneyAmount((moneyAmount) => {});
+    InputView.requestMoneyAmount(this.#createLottoPhase.bind(this));
+  }
+
+  #createLottoPhase(moneyAmount) {
+    Validation.validateMoneyAmount(moneyAmount);
   }
 }
 
