@@ -1,4 +1,5 @@
 const { ERROR_MSG } = require('./constants/message.js');
+const { LOTTO } = require('./constants/condition.js');
 
 class Validation {
   static validateMoneyAmount(moneyAmount) {
@@ -8,6 +9,10 @@ class Validation {
 
     if (!this.#isStartedZero(moneyAmount)) {
       throw new Error(ERROR_MSG.startedZero);
+    }
+
+    if (!this.#isDivisibleByLottoPrice(moneyAmount)) {
+      throw new Error(ERROR_MSG.indivisibleByLottoPrice);
     }
   }
 
@@ -20,6 +25,12 @@ class Validation {
 
   static #isStartedZero(input) {
     return input.startsWith('0');
+  }
+
+  static #isDivisibleByLottoPrice(input) {
+    const remainder = parseInt(input) % LOTTO.price;
+
+    return remainder === 0;
   }
 }
 
