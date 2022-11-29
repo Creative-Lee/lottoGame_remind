@@ -47,6 +47,20 @@ class LottoGame {
     });
   }
 
+  getPrizeStatistics(eachPrize) {
+    const statistics = {
+      fifth: 0,
+      fourth: 0,
+      third: 0,
+      second: 0,
+      first: 0,
+    };
+
+    eachPrize.forEach((prize) => (statistics[prize] += 1));
+
+    return statistics;
+  }
+
   getTotalPrize(eachPrize) {
     return eachPrize.reduce((totalPrize, prize) => totalPrize + PRIZE_MONEY[prize], 0);
   }

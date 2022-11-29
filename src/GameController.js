@@ -63,6 +63,8 @@ class GameController {
   }
 
   #statisticsPhase(eachPrize) {
+    const prizeStatistics = this.#lottoGame.getPrizeStatistics(eachPrize);
+
     const totalPrize = this.#lottoGame.getTotalPrize(eachPrize);
     const yiledRatio = this.#lottoGame.getYiledRatio(totalPrize);
   }
