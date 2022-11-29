@@ -38,6 +38,7 @@ class GameController {
   #requestWinningNumber() {
     InputView.requestWinningNumber((winningNumber) => {
       WinningNumberValidaion.validateWinningNumber(winningNumber);
+      this.#lottoGame.setWinningNumber(winningNumber);
     });
   }
 }
