@@ -3,45 +3,41 @@ const { LOTTO } = require('../constants/condition.js');
 
 class WinningNumberValidaion {
   static validateWinningNumber(winningNumber) {
-    if (!this.#hasOnlyNumber(winningNumber)) {
+    const winningNumberArr = winningNumber.split(',');
+
+    if (!this.#hasOnlyNumber(winningNumberArr)) {
       throw new Error(ERROR_MSG.invalidInputType);
     }
 
-    if (!this.#isValidLottoNumberLength(winningNumber)) {
+    if (!this.#isValidLottoNumberLength(winningNumberArr)) {
       throw new Error(ERROR_MSG.invalidLottoNumberLength);
     }
 
-    if (!this.#isValidLottoNumberRange(winningNumber)) {
+    if (!this.#isValidLottoNumberRange(winningNumberArr)) {
       throw new Error(ERROR_MSG.invalidLottoNumberRange);
     }
 
-    if (!this.#hasUniqueLottoNumber(winningNumber)) {
+    if (!this.#hasUniqueLottoNumber(winningNumberArr)) {
       throw new Error(ERROR_MSG.duplicatedLottoNumber);
     }
   }
 
   static #hasOnlyNumber(input) {
-    return input
-      .split(',')
-      .map((eachLetter) => parseInt(eachLetter))
-      .every(Number.isInteger);
+    return input.map((eachLetter) => parseInt(eachLetter)).every(Number.isInteger);
   }
 
   static #isValidLottoNumberLength(input) {
-    return input.split(',').length === LOTTO.digits;
+    return input.length === LOTTO.digits;
   }
 
   static #isValidLottoNumberRange(input) {
-    input
-      .split(',')
-      .map(Number)
-      .every((number) => {
-        return LOTTO.numberMinRange <= number && number <= LOTTO.numberMaxRange;
-      });
+    return input.map(Number).every((number) => {
+      return LOTTO.numberMinRange <= number && number <= LOTTO.numberMaxRange;
+    });
   }
 
   static #hasUniqueLottoNumber(input) {
-    return new Set(input.split(',')).size === LOTTO.digits;
+    return new Set(input).size === LOTTO.digits;
   }
 }
 
