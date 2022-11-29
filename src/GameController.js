@@ -2,6 +2,7 @@ const InputView = require('./views/InputView.js');
 const OutputView = require('./views/OutputView.js');
 const MoneyAmountValidation = require('./Validation/MoneyAmountValidation.js');
 const WinningNumberValidaion = require('./Validation/WinningNumberValidation.js');
+const BonusNumberValidation = require('./Validation/BonusNumberValidation.js');
 const LottoGame = require('./LottoGame.js');
 const Lotto = require('./Lotto.js');
 const { LOTTO } = require('./constants/condition.js');
@@ -40,12 +41,14 @@ class GameController {
       WinningNumberValidaion.validateWinningNumber(winningNumber);
       this.#lottoGame.setWinningNumber(winningNumber);
 
-      this.#requestBounsNumber();
+      this.#requestBounsNumber(winningNumber);
     });
   }
 
-  #requestBounsNumber() {
-    InputView.requestBonusNumber((bonusNumber) => {});
+  #requestBounsNumber(winningNumber) {
+    InputView.requestBonusNumber((bonusNumber) => {
+      BonusNumberValidation.validateBonusNumber(bonusNumber, winningNumber);
+    });
   }
 }
 
