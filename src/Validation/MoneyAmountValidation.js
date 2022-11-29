@@ -1,7 +1,7 @@
-const { ERROR_MSG } = require('./constants/message.js');
-const { LOTTO } = require('./constants/condition.js');
+const { ERROR_MSG } = require('../constants/message.js');
+const { LOTTO } = require('../constants/condition.js');
 
-class Validation {
+class MoneyAmountValidation {
   static validateMoneyAmount(moneyAmount) {
     if (!this.#hasOnlyNumber(moneyAmount)) {
       throw new Error(ERROR_MSG.invalidInputType);
@@ -34,4 +34,4 @@ class Validation {
   }
 }
 
-module.exports = Validation;
+module.exports = MoneyAmountValidation;

@@ -1,6 +1,7 @@
 const InputView = require('./views/InputView.js');
 const OutputView = require('./views/OutputView.js');
-const Validation = require('./Validation.js');
+const MoneyAmountValidation = require('./Validation/MoneyAmountValidation.js');
+const WinningNumberValidaion = require('./Validation/WinningNumberValidation.js');
 const LottoGame = require('./LottoGame.js');
 const Lotto = require('./Lotto.js');
 const { LOTTO } = require('./constants/condition.js');
@@ -22,7 +23,7 @@ class GameController {
   }
 
   #createLottoPhase(moneyAmount) {
-    Validation.validateMoneyAmount(moneyAmount);
+    MoneyAmountValidation.validateMoneyAmount(moneyAmount);
 
     const lottoQuantity = moneyAmount / LOTTO.price;
     const eachLottoNumbers = Array.from({ length: lottoQuantity }, lottoNumberGenerator);
@@ -35,7 +36,9 @@ class GameController {
   }
 
   #requestWinningNumber() {
-    InputView.requestWinningNumber((winningNumber) => {});
+    InputView.requestWinningNumber((winningNumber) => {
+      WinningNumberValidaion.validateWinningNumber(winningNumber);
+    });
   }
 }
 
