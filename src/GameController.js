@@ -48,6 +48,8 @@ class GameController {
   #requestBounsNumber(winningNumber) {
     InputView.requestBonusNumber((bonusNumber) => {
       BonusNumberValidation.validateBonusNumber(bonusNumber, winningNumber);
+
+      this.#lottoGame.setBonusNumber(bonusNumber);
     });
   }
 }
