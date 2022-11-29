@@ -9,6 +9,7 @@ const ERROR_MSG = {
   indivisibleByLottoPrice: '[ERROR] 입력값이 로또 가격으로 나누어 떨어지지 않습니다.',
   invalidLottoNumberLength: '[ERROR] 유효하지 않은 로또 번호 길이입니다.',
   invalidLottoNumberRange: '[ERROR] 유효하지 않은 로또 번호 범위입니다.',
+  duplicatedLottoNumber: '[ERROR] 로또 번호에 중복이 있습니다.',
 };
 
 module.exports = {

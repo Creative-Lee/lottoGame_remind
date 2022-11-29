@@ -14,6 +14,10 @@ class WinningNumberValidaion {
     if (!this.#isValidLottoNumberRange(winningNumber)) {
       throw new Error(ERROR_MSG.invalidLottoNumberRange);
     }
+
+    if (!this.#hasUniqueLottoNumber(winningNumber)) {
+      throw new Error(ERROR_MSG.duplicatedLottoNumber);
+    }
   }
 
   static #hasOnlyNumber(input) {
@@ -34,6 +38,10 @@ class WinningNumberValidaion {
       .every((number) => {
         return LOTTO.numberMinRange <= number && number <= LOTTO.numberMaxRange;
       });
+  }
+
+  static #hasUniqueLottoNumber(input) {
+    return new Set(input.split(',')).size === LOTTO.digits;
   }
 }
 
