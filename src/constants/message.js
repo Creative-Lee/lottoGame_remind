@@ -8,6 +8,7 @@ const ERROR_MSG = {
   startedZero: '[ERROR] 입력값이 0으로 시작합니다.',
   indivisibleByLottoPrice: '[ERROR] 입력값이 로또 가격으로 나누어 떨어지지 않습니다.',
   invalidLottoNumberLength: '[ERROR] 유효하지 않은 로또 번호 길이입니다.',
+  invalidLottoNumberRange: '[ERROR] 유효하지 않은 로또 번호 범위입니다.',
 };
 
 module.exports = {

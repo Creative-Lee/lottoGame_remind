@@ -10,6 +10,10 @@ class WinningNumberValidaion {
     if (!this.#isValidLottoNumberLength(winningNumber)) {
       throw new Error(ERROR_MSG.invalidLottoNumberLength);
     }
+
+    if (!this.#isValidLottoNumberRange(winningNumber)) {
+      throw new Error(ERROR_MSG.invalidLottoNumberRange);
+    }
   }
 
   static #hasOnlyNumber(input) {
@@ -21,6 +25,15 @@ class WinningNumberValidaion {
 
   static #isValidLottoNumberLength(input) {
     return input.split(',').length === LOTTO.digits;
+  }
+
+  static #isValidLottoNumberRange(input) {
+    input
+      .split(',')
+      .map(Number)
+      .every((number) => {
+        return LOTTO.numberMinRange <= number && number <= LOTTO.numberMaxRange;
+      });
   }
 }
 
