@@ -56,7 +56,15 @@ class GameController {
   }
 
   #comparePhase() {
-    this.#lottoGame.getEachCompareResult();
+    const results = this.#lottoGame.getEachCompareResult();
+    const eachPrize = this.#lottoGame.getEachLottoPrize(results);
+
+    this.#statisticsPhase(eachPrize);
+  }
+
+  #statisticsPhase(eachPrize) {
+    const totalPrize = this.#lottoGame.getTotalPrize(eachPrize);
+    const yiledRatio = this.#lottoGame.getYiledRatio(totalPrize);
   }
 }
 
