@@ -16,6 +16,15 @@ class LottoGame {
   setBonusNumber(bonusNumber) {
     this.#bonusNumber = bonusNumber;
   }
+
+  getEachCompareResult() {
+    return this.#Lottos.map((lotto) => {
+      const matchedCount = lotto.getMatchedLottoNumberCount(this.#winningNumber);
+      const hasBonusNumber = lotto.hasBonusNumber(this.#bonusNumber);
+
+      return { matchedCount, hasBonusNumber };
+    });
+  }
 }
 
 module.exports = LottoGame;

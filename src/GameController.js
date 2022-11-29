@@ -50,7 +50,13 @@ class GameController {
       BonusNumberValidation.validateBonusNumber(bonusNumber, winningNumber);
 
       this.#lottoGame.setBonusNumber(bonusNumber);
+
+      this.#comparePhase();
     });
+  }
+
+  #comparePhase() {
+    this.#lottoGame.getEachCompareResult();
   }
 }
 
