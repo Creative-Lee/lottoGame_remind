@@ -1,6 +1,6 @@
 const Lotto = require('./Lotto.js');
 const { LOTTO } = require('./constants/condition.js');
-const { PRIZE_MONEY } = require('./constants/condition.js');
+const { PRIZE } = require('./constants/condition.js');
 
 class LottoGame {
   #Lottos;
@@ -62,13 +62,13 @@ class LottoGame {
   }
 
   getTotalPrize(eachPrize) {
-    return eachPrize.reduce((totalPrize, prize) => totalPrize + PRIZE_MONEY[prize], 0);
+    return eachPrize.reduce((totalPrize, prize) => totalPrize + PRIZE.money[prize], 0);
   }
 
   getYiledRatio(totalPrize) {
     const moneyAmount = this.#Lottos.length * LOTTO.price;
 
-    return ((moneyAmount / totalPrize) * 100).toFixed(2);
+    return ((totalPrize / moneyAmount) * 100).toLocaleString(new Intl.NumberFormat('KRW'));
   }
 }
 

@@ -4,7 +4,6 @@ const MoneyAmountValidation = require('./Validation/MoneyAmountValidation.js');
 const WinningNumberValidaion = require('./Validation/WinningNumberValidation.js');
 const BonusNumberValidation = require('./Validation/BonusNumberValidation.js');
 const LottoGame = require('./LottoGame.js');
-const Lotto = require('./Lotto.js');
 const { LOTTO } = require('./constants/condition.js');
 const lottoNumberGenerator = require('./utils/lottoNumberGenerator.js');
 
@@ -67,6 +66,9 @@ class GameController {
 
     const totalPrize = this.#lottoGame.getTotalPrize(eachPrize);
     const yiledRatio = this.#lottoGame.getYiledRatio(totalPrize);
+
+    OutputView.printPrizeStatistics(prizeStatistics);
+    OutputView.printYiledRatio(yiledRatio);
   }
 }
 

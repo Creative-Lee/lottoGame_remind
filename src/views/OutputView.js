@@ -1,4 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
+const TemplateMaker = require('../utils/TemplateMaker.js');
 
 const OutputView = {
   printLottoQuantity(quantity) {
@@ -12,6 +13,16 @@ const OutputView = {
 
       Console.print(`[${joinedNumbers}]`);
     });
+  },
+
+  printPrizeStatistics(prizeStatistics) {
+    const templates = TemplateMaker.getStatisticsTemplate(prizeStatistics);
+
+    templates.forEach(Console.print);
+  },
+
+  printYiledRatio(yiledRatio) {
+    Console.print(`총 수익률은 ${yiledRatio}%입니다.`);
   },
 };
 
