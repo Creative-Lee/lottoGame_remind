@@ -3,11 +3,11 @@ const { LOTTO } = require('../constants/condition.js');
 
 class WinningNumberValidaion {
   static validateWinningNumber(winningNumber) {
-    if (this.#hasOnlyNumber(winningNumber)) {
+    if (!this.#hasOnlyNumber(winningNumber)) {
       throw new Error(ERROR_MSG.invalidInputType);
     }
 
-    if (this.#isValidLottoNumberLength(winningNumber)) {
+    if (!this.#isValidLottoNumberLength(winningNumber)) {
       throw new Error(ERROR_MSG.invalidLottoNumberLength);
     }
   }
