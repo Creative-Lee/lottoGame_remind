@@ -18,7 +18,7 @@ const OutputView = {
   printPrizeStatistics(prizeStatistics) {
     const templates = TemplateMaker.getStatisticsTemplate(prizeStatistics);
 
-    templates.forEach(Console.print);
+    templates.forEach((template) => Console.print(template));
   },
 
   printYiledRatio(yiledRatio) {

@@ -1,12 +1,12 @@
-const Validation = require('../src/Validation.js');
+const MoneyAmountValidation = require('../src/Validation/MoneyAmountValidation.js');
 const { ERROR_MSG } = require('../src/constants/message.js');
 
-describe('Validation.validateMoneyAmount 메서드 테스트', () => {
+describe('MoneyAmountValidation.validateMoneyAmount 메서드 테스트', () => {
   test('숫자가 아닌 값이 주어지면 Error를 return 해야 한다.', () => {
     const input = 'asd';
 
     expect(() => {
-      Validation.validateMoneyAmount(input);
+      MoneyAmountValidation.validateMoneyAmount(input);
     }).toThrow(ERROR_MSG.invalidInputType);
   });
 
@@ -14,7 +14,7 @@ describe('Validation.validateMoneyAmount 메서드 테스트', () => {
     const input = '01000';
 
     expect(() => {
-      Validation.validateMoneyAmount(input);
+      MoneyAmountValidation.validateMoneyAmount(input);
     }).toThrow(ERROR_MSG.startedZero);
   });
 
@@ -22,7 +22,7 @@ describe('Validation.validateMoneyAmount 메서드 테스트', () => {
     const input = '1100';
 
     expect(() => {
-      Validation.validateMoneyAmount(input);
+      MoneyAmountValidation.validateMoneyAmount(input);
     }).toThrow(ERROR_MSG.indivisibleByLottoPrice);
   });
 });
